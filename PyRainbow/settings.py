@@ -39,12 +39,20 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'PyRainbow.snippets',
+    'guardian'
 )
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
     'PAGE_SIZE': 10
 }
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend'
+)
+
+ANONYMOUS_USER_ID = -1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
