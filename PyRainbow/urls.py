@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from rest_framework import routers
+from PyRainbow.snippets import views
 from PyRainbow.quickstart import views
 
 #from django.contrib import admin
@@ -29,5 +30,6 @@ urlpatterns = [
 #    url(r'^api-path/', include('rest_framework.urls', namespace='rest_framework'))
 	url(r'^', include(router.urls)),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+	url(r'^', include('snippets.urls')),
 
 ]
