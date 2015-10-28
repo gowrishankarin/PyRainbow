@@ -16,20 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from rest_framework import routers
 from PyRainbow.snippets import views # HOW TO MAKE THIS WORK
-from PyRainbow.quickstart import views
+from PyRainbow.quickstart import views as qs_views
 
 #from django.contrib import admin
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
-
+router.register(r'users', qs_views.UserViewSet)
+router.register(r'groups', qs_views.GroupViewSet)
 
 urlpatterns = [
 #    url(r'^admin/', include(admin.site.urls)),
 #    url(r'^api-path/', include('rest_framework.urls', namespace='rest_framework'))
 	url(r'^', include(router.urls)),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-	url(r'^', include('PyRainbow.snippets.urls')),  # HOW TO MAKE THIS WORK
-
+    url(r'^', include('PyRainbow.snippets.urls'))
 ]
