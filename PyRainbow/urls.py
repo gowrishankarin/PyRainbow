@@ -30,5 +30,6 @@ urlpatterns = [
 	url(r'^', include(router.urls)),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', include('PyRainbow.snippets.urls')),
-    url(r'^', include('customers.urls'))
+    url(r'^', include('customers.urls')),
+    url(r'^', include('employees.urls')) 
 ]
