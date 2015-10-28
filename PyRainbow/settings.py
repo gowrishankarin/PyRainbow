@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'PyRainbow.snippets',
     'customers',
     'employees',
+    'trees',
     'guardian'
 )
 
