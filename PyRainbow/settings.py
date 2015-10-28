@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'customers',
     'employees',
     'trees',
+    'switters',
     'guardian'
 )
 

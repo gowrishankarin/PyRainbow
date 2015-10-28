@@ -32,5 +32,6 @@ urlpatterns = [
     url(r'^', include('PyRainbow.snippets.urls')),
     url(r'^', include('customers.urls')),
     url(r'^', include('employees.urls')),
-    url(r'^', include('trees.urls')) 
+    url(r'^', include('trees.urls')),
+    url(r'^', include('switters.urls')) 
 ]
