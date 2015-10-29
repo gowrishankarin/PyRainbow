@@ -4,7 +4,7 @@ from switters.models import Switter, LANGUAGE_CHOICES, STYLE_CHOICES
 
 class SwitterSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    highlight = serializers.HyperlinkedModelSerializer(view_name = 'switter-highlight',
+    highlight = serializers.HyperlinkedIdentityField(view_name = 'switter-highlight',
                             format = 'html')
     class Meta:
         model = Switter
@@ -17,4 +17,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'snippets')
+        fields = ('id', 'username', 'switters')
