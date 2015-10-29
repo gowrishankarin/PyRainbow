@@ -2,14 +2,18 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from switters.models import Switter, LANGUAGE_CHOICES, STYLE_CHOICES
 
-class SwitterSerializer(serializers.ModelSerializer):
+class SwitterSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    highlight = serializers.HyperlinkedModelSerializer(view_name = 'switter-highlight',
+                            format = 'html')
     class Meta:
         model = Switter
-        fields = ('id', 'title', 'code', 'linenos', 'language', 'style', 'owner')
+        fields = ('url', 'title', 'code', 'linenos', 'language',
+                    'style', 'owner', 'highlight')
 
-class UserSerializer(serializers.ModelSerializer):
-    switters = serializers.PrimaryKeyRelatedField(many = True, queryset = Switter.objects.all())
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    switters = serializers.HyperlinkedRelatedField(many = True,
+        view_name = 'switter-detail', read_only=True)
 
     class Meta:
         model = User
