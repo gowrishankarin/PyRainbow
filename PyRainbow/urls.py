@@ -17,12 +17,14 @@ from django.conf.urls import url, include
 from rest_framework import routers
 from PyRainbow.snippets import views # HOW TO MAKE THIS WORK
 from PyRainbow.quickstart import views as qs_views
+from switters import views as sw_views
 
 #from django.contrib import admin
 
 router = routers.DefaultRouter()
-router.register(r'users', qs_views.UserViewSet)
+router.register(r'users', sw_views.UserViewSet)
 router.register(r'groups', qs_views.GroupViewSet)
+router.register(r'switters', sw_views.SwitterViewSet)
 
 urlpatterns = [
 #    url(r'^admin/', include(admin.site.urls)),
@@ -33,5 +35,5 @@ urlpatterns = [
     url(r'^', include('customers.urls')),
     url(r'^', include('employees.urls')),
     url(r'^', include('trees.urls')),
-    url(r'^', include('switters.urls')) 
+    url(r'^', include('switters.urls'))
 ]
